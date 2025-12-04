@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshot.png" width="700"/>
+</p>
+
 🧠 Facial Reaction Password (FRP)
 
 A next-generation biometric authentication system that identifies users using facial micro-reactions, blinking behavior, and natural movement patterns.
