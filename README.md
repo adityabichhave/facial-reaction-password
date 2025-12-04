@@ -1,26 +1,26 @@
 🧠 Facial Reaction Password (FRP)
-A next-generation biometric authentication system based on facial micro-reactions, blinking, and movement patterns.
 
-FRP uses AI-powered facial landmark tracking, DTW sequence matching, and anti-spoofing checks to authenticate users based on subtle, unique micro-expressions.
-It works using a standard webcam — no specialized hardware required.
+A next-generation biometric authentication system that identifies users using facial micro-reactions, blinking behavior, and natural movement patterns.
+
+Unlike traditional passwords or face-recognition systems, FRP records your reaction sequence (blink → smile → slight head movement, etc.) and uses AI to verify it.
+It works using any standard webcam — no specialized hardware needed.
 
 🚀 Features
 🔹 Real-Time Facial Landmark Tracking
 
-Powered by MediaPipe Face Landmarker, detecting 468+ facial points with high precision.
+Powered by MediaPipe Face Landmarker, detecting 468+ facial points with high precision and low latency.
 
-🔹 Reaction-Based Password (Instead of text passwords)
+🔹 Reaction-Based Password (Instead of Text Passwords)
 
-User performs a natural facial reaction sequence (blink, smile, movement).
-This sequence becomes the "password".
+Users perform a natural facial sequence which becomes the unique password template.
 
-🔹 AI Matching Using DTW Algorithm
+🔹 AI Matching Using Dynamic Time Warping (DTW)
 
-Dynamic Time Warping compares reaction sequences to stored templates.
+DTW compares two sets of motion-based landmark sequences to determine user identity.
 
-🔹 Anti-Spoofing Detection
+🔹 Anti-Spoofing System
 
-Prevents fake login attempts using:
+Detects and blocks fake login attempts using:
 
 Motion variance
 
@@ -28,17 +28,28 @@ Blink detection
 
 Micro-movement consistency
 
-🔹 Secure Local Template Storage
+Landmark noise analysis
 
-Each user gets a locally encrypted facial reaction feature template.
+🔹 Secure Local Storage
 
-🔹 Backend Ready (Optional)
+User facial templates are stored as numerical vectors, not images.
+Supports:
 
-Includes Express.js API endpoints for saving/loading templates remotely.
+LocalStorage (frontend-only mode)
 
-🔹 Fully Responsive VisionOS-Inspired UI
+Express backend storage (optional)
 
-A premium UI with holographic visuals and realtime metrics.
+🔹 Beautiful VisionOS-Inspired UI
+
+Premium holographic design featuring:
+
+Floating glass panels
+
+Sleek motion indicators
+
+Real-time metrics
+
+Minimalistic control panel
 
 🛠️ Tech Stack
 Frontend
@@ -55,15 +66,20 @@ Backend
 
 Node.js + Express
 
-Local JSON storage (can be replaced with a database)
+Local JSON template storage
+(Upgradable to MongoDB / Firebase easily)
 
 Other Tools
 
 Dynamic Time Warping (DTW)
 
-LocalStorage for template caching
+LocalStorage caching
+
+Web Share API
 
 📸 Demo Preview
+
+Replace screenshot.png with your actual screenshot
 
 ![FRP Screenshot](./screenshot.png)
 
@@ -89,7 +105,7 @@ facial-reaction-password/
 
 ⚙️ Installation & Setup
 1️⃣ Clone Repository
-git clone https://github.com/YOUR_USERNAME/facial-reaction-password.git
+git clone https://github.com/adityabichhave/facial-reaction-password.git
 cd facial-reaction-password
 
 🎨 Frontend Setup (React + Vite)
@@ -98,7 +114,7 @@ npm install
 npm run dev
 
 
-Frontend will start at:
+Frontend starts at:
 👉 http://localhost:5173
 
 🧩 Backend Setup (Node.js + Express)
@@ -107,69 +123,76 @@ npm install
 npm run dev
 
 
-Backend will start at:
+Backend runs at:
 👉 http://localhost:5001
 
 🔐 How Authentication Works
 
-FRP records:
+FRP records 468+ facial landmarks across multiple frames
 
-468+ facial points for several frames
+Normalizes vectors around the face center
 
-Normalizes vectors
+Creates a unique reaction pattern
 
-Runs Dynamic Time Warping to match sequences
+Runs DTW to compare sequences
 
-Checks blink + movement for anti-spoof
+Applies anti-spoofing checks
 
 Computes similarity score
 
-Compares score to threshold
+Accepts or rejects login based on threshold
 
-Grants access if below threshold
-
-🧪 API Endpoints (Optional)
+🧪 API Endpoints (Backend Optional)
 POST /api/enroll
 
-Stores user template.
+Stores a user’s facial reaction template.
 
 GET /api/template/:username
 
-Retrieves stored template.
+Retrieves stored template for login matching.
 
 🔒 Security Notes
 
-✔ No raw video or images are stored.
-✔ Only numerical landmark templates are saved.
-✔ All templates stay local unless backend upload is enabled.
-✔ Works offline.
+✔ No raw video or images are stored
+✔ Templates contain only floating-point vectors
+✔ Works completely offline
+✔ Users control their own data
+✔ Backend storage is optional
 
 🌍 Real-World Applications
 
-Password-less login systems
+Passwordless authentication
 
-Secure workstation access
+Secure workstation login
 
-High-security labs
+High-security lab access
 
 Personal computer unlocking
 
-University research projects
+Research in biometrics & AI
 
-Gesture-based UI authentication
+Gesture-based UI systems
 
-Advanced biometric systems
+Human-computer interaction studies
 
 🤝 Contributing
 
 Pull requests are welcome!
-Feel free to open issues for UI/UX, performance, or algorithm improvements.
+Open issues for:
+
+UI/UX improvements
+
+Performance tuning
+
+Model optimization
+
+Security enhancements
 
 📜 License
 
-MIT License — free to use and modify.
+This project is licensed under the MIT License — free to use and modify.
 
 👨‍💻 Developed By
-
 Aditya Kumar Bichhave
+
 B.Tech CSE | Cyber Security Enthusiast | Full-Stack Developer
